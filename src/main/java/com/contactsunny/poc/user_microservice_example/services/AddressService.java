@@ -22,7 +22,7 @@ public class AddressService {
     RestTemplate restTemplate;
 
     public List<Address> getAddressForUser(int userId) {
-        String url = "http://address-service/address/" + userId;
+        String url = addressServiceBaseUrl + "/address/" + userId;
         String response = restTemplate.getForObject(url, String.class);
         Type addressListType = new TypeToken<ArrayList<Address>>(){}.getType();
         List<Address> addressList = new Gson().fromJson(response, addressListType);
